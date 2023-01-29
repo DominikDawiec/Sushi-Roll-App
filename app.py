@@ -12,11 +12,11 @@ ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', '
 
 # Sushi rolls and their ingredients
 sushi_rolls = {
-    '🌊 Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
-    '🍃 Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
-    '🔥 Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
-    '🐲 Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
-    '🌞 California Roll': ['crab', 'avocado', 'cucumber'],
+    'Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
+    'Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
+    'Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
+    'Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
+    'California Roll': ['crab', 'avocado', 'cucumber'],
 }
 
 # Function to get the list of rolls that can be made
