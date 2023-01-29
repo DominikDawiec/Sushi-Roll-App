@@ -30,34 +30,37 @@ selected_ingredients = []
 col1, col2, col3 = st.columns(3)
 
 with col1:
+    st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[:len(ingredients)//3]:
         try:
             img = Image.open(f"{ingredient}.png")
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-            st.image(img, width=50)
+            st.image(img, width=50, use_column_width=True)
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
 
 with col2:
+    st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[len(ingredients)//3:2*len(ingredients)//3]:
         try:
             img = Image.open(f"{ingredient}.png")
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-            st.image(img, width=50)
+            st.image(img, width=50, use_column_width=True)
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
 
 with col3:
+    st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[2*len(ingredients)//3:]:
         try:
             img = Image.open(f"{ingredient}.png")
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-            st.image(img, width=50)
+            st.image(img, width=50, use_column_width=True)
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
