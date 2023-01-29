@@ -27,9 +27,9 @@ st.title("Sushi Roll Maker")
 selected_ingredients = []
 
 # Divide the columns into two parts
-columns = st.columns(2)
+col1, col2 = st.columns(2)
 
-with columns:
+with col1:
     for ingredient in ingredients[:len(ingredients)//2]:
         try:
             img = Image.open(f"{ingredient}.png")
@@ -39,7 +39,7 @@ with columns:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-    with columns:
+with col2:
         for ingredient in ingredients[len(ingredients)//2:]:
             try:
                 img = Image.open(f"{ingredient}.png")
