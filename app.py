@@ -27,13 +27,14 @@ st.title("Sushi Roll Maker")
 selected_ingredients = []
 
 for ingredient in ingredients:
-    if st.checkbox(f"{ingredient}"):
-        selected_ingredients.append(ingredient)
-        try:
-            img = Image.open(f"{ingredient}.jpg")
-            st.image(img, width=50)
-        except:
-            pass
+    try:
+        img = Image.open(f"{ingredient}.jpg")
+        if st.checkbox(f"{ingredient}", key=ingredient):
+            selected_ingredients.append(ingredient)
+        st.image(img, width=50)
+    except:
+        if st.checkbox(f"{ingredient}", key=ingredient):
+            selected_ingredients.append(ingredient)
 
 if st.button("Load"):
     if len(selected_ingredients) > 0:
