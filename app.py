@@ -23,7 +23,10 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("Sushi Roll Maker")
 
-selected_ingredients = st.multiselect("Select Ingredients", ingredients)
+selected_ingredients = []
+for ingredient in ingredients:
+    if st.checkbox(ingredient):
+        selected_ingredients.append(ingredient)
 
 if len(selected_ingredients) > 0:
     st.write("You can make the following rolls:")
@@ -31,3 +34,4 @@ if len(selected_ingredients) > 0:
     st.write(*rolls)
 else:
     st.write("Please select ingredients.")
+
