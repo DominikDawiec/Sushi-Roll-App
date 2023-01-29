@@ -24,17 +24,25 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("Sushi Roll Maker")
 
-selected_ingredients = st.multiselect("Select Ingredients", ingredients)
+selected_ingredients = []
 
-if len(selected_ingredients) > 0:
-    st.write("You can make the following rolls:")
-    rolls = get_rolls(selected_ingredients)
-    for roll in rolls:
-        st.write(roll)
-else:
-    st.write("Please select ingredients.")
-
-# Display images for all ingredients
 for ingredient in ingredients:
-    image = Image.open(f"{ingredient}.jpg")
-    st.image(image, width=100)
+    if st.checkbox(f"{ingredient}"):
+        selected_ingredients.append(ingredient)
+        try:
+            img = Image.open(f"{ingredient}.jpg")
+            st.image(img, width=50)
+        except:
+            pass
+
+if st.button("Load"):
+    if len(selected_ingredients) > 0:
+        st.write("You can make the following rolls:")
+        rolls = get_rolls(selected_ingredients)
+        if rolls:
+            for roll in rolls:
+                st.write(f"{roll}")
+        else:
+            st.write("You cannot make any sushi rolls.")
+    else:
+        st.write("Please select ingredients.")
