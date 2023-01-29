@@ -26,11 +26,11 @@ st.title("Sushi Roll Maker")
 
 selected_ingredients = []
 
-# New code
-ingredient_col1, ingredient_col2 = ingredients[:len(ingredients)//2], ingredients[len(ingredients)//2:]
+# Divide the columns into two parts
+columns = st.beta_columns(2)
 
-with st.beta_expander("Ingredients 1"):
-    for ingredient in ingredient_col1:
+with columns:
+    for ingredient in ingredients[:len(ingredients)//2]:
         try:
             img = Image.open(f"{ingredient}.png")
             if st.checkbox(f"{ingredient}", key=ingredient):
@@ -39,17 +39,16 @@ with st.beta_expander("Ingredients 1"):
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-
-with st.beta_expander("Ingredients 2"):
-    for ingredient in ingredient_col2:
-        try:
-            img = Image.open(f"{ingredient}.png")
-            if st.checkbox(f"{ingredient}", key=ingredient):
-                selected_ingredients.append(ingredient)
-            st.image(img, width=50)
-        except:
-            if st.checkbox(f"{ingredient}", key=ingredient):
-                selected_ingredients.append(ingredient)
+    with columns:
+        for ingredient in ingredients[len(ingredients)//2:]:
+            try:
+                img = Image.open(f"{ingredient}.png")
+                if st.checkbox(f"{ingredient}", key=ingredient):
+                    selected_ingredients.append(ingredient)
+                st.image(img, width=50)
+            except:
+                if st.checkbox(f"{ingredient}", key=ingredient):
+                    selected_ingredients.append(ingredient)
 
 if st.button("Load"):
     if len(selected_ingredients) > 0:
