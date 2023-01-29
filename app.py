@@ -28,7 +28,7 @@ def get_rolls(ingredients):
     return available_rolls
 
 # Streamlit app
-st.title("🍣 Sushi Roll Maker 🍣")
+st.title("🍣 Sushi Roll Maker")
 
 selected_ingredients = []
 
@@ -74,7 +74,7 @@ with col3:
                 selected_ingredients.append(ingredient)
     st.markdown("</center>", unsafe_allow_html=True)
     
-if st.button("Load 🚀"):
+if st.button("Load 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
