@@ -8,8 +8,8 @@ ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', '
 sushi_rolls = {
     'Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
     'Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
-    'Spicy Tuna Roll': ['tuna', 'spicy mayo', 'avocado'],
-    'Dragon Roll': ['eel', 'avocado', 'cucumber'],
+    'Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
+    'Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
     'California Roll': ['crab', 'avocado', 'cucumber'],
 }
 
@@ -69,12 +69,15 @@ with col3:
     st.markdown("</center>", unsafe_allow_html=True)
     
 if st.button("Load"):
+    st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
         rolls = get_rolls(selected_ingredients)
         if rolls:
             for roll in rolls:
-                st.write(f"{roll}")
+                roll_img = Image.open(f"{roll}.png")
+                st.image(roll_img, width=100)
+                st.write("Ingredients: ", sushi_rolls[roll])
         else:
             st.write("You cannot make any sushi rolls.")
     else:
