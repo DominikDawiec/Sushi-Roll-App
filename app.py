@@ -1,16 +1,24 @@
 import streamlit as st
 from PIL import Image
 
+st.set_page_config(
+    page_title="Sushi App",
+    page_icon="🍣",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    }
+)
+
 # List of ingredients
 ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
 
 # Sushi rolls and their ingredients
 sushi_rolls = {
-    'Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
-    'Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
-    'Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
-    'Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
-    'California Roll': ['crab', 'avocado', 'cucumber'],
+    '🌊 Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
+    '🍃 Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
+    '🔥 Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
+    '🐲 Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
+    '🌞 California Roll': ['crab', 'avocado', 'cucumber'],
 }
 
 # Function to get the list of rolls that can be made
@@ -22,7 +30,7 @@ def get_rolls(ingredients):
     return available_rolls
 
 # Streamlit app
-st.title("Sushi Roll Maker")
+st.title("🍣 Sushi Roll Maker 🍣")
 
 selected_ingredients = []
 
@@ -68,7 +76,7 @@ with col3:
                 selected_ingredients.append(ingredient)
     st.markdown("</center>", unsafe_allow_html=True)
     
-if st.button("Load"):
+if st.button("Load 🚀"):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
