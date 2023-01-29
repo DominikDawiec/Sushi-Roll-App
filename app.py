@@ -23,20 +23,16 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("Sushi Roll Maker")
 
-st.write("Please select ingredients.")
-
 selected_ingredients = []
 for ingredient in ingredients:
     if st.checkbox(ingredient):
         selected_ingredients.append(ingredient)
 
-if len(selected_ingredients) > 0:
-    st.write("You can make the following rolls:")
-    rolls = get_rolls(selected_ingredients)
-    for roll in rolls:
-        st.write(f"- {roll} ({', '.join(sushi_rolls[roll])})")
-else:
-    st.write("N/A")
-
-    
-
+if st.button("Load"):
+    if len(selected_ingredients) > 0:
+        st.write("You can make the following rolls:")
+        rolls = get_rolls(selected_ingredients)
+        for roll in rolls:
+            st.write(f"- {roll} ({', '.join(sushi_rolls[roll])})")
+    else:
+        st.write("Please select ingredients.")
