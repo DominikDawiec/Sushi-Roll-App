@@ -24,21 +24,18 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("Sushi Roll Maker")
 
-selected_ingredients = []
-
-# Show images and checkboxes for ingredients
-for ingredient in ingredients:
-    img = Image.open(f"{ingredient}.jpg")
-    is_selected = st.checkbox(f"{ingredient}", False)
-    if is_selected:
-        selected_ingredients.append(ingredient)
-        st.image(img, width=50)
+selected_ingredients = st.checkbox("Select Ingredients", ingredients)
 
 if st.button("Load"):
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
         rolls = get_rolls(selected_ingredients)
         for roll in rolls:
-            st.write(roll)
+            st.write("- {}".format(roll))
     else:
         st.write("You cannot make any sushi rolls.")
+
+# Display images next to each ingredient
+for ingredient in ingredients:
+    img = Image.open("{}.jpg".format(ingredient))
+    st.image(img, width=100)
