@@ -40,6 +40,7 @@ with col1:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
+    st.markdown("</center>", unsafe_allow_html=True)
 
 with col2:
     st.markdown("<center>", unsafe_allow_html=True)
@@ -52,7 +53,8 @@ with col2:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-
+    st.markdown("</center>", unsafe_allow_html=True)
+    
 with col3:
     st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[2*len(ingredients)//3:]:
@@ -64,7 +66,8 @@ with col3:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-
+    st.markdown("</center>", unsafe_allow_html=True)
+    
 if st.button("Load"):
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
