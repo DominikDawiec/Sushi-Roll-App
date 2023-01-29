@@ -26,23 +26,28 @@ st.title("Sushi Roll Maker")
 
 selected_ingredients = []
 
+ingredient_list = []
 for ingredient in ingredients:
     try:
         img = Image.open(f"{ingredient}.jpg")
-        if st.checkbox(f"{ingredient}", key=ingredient):
-            selected_ingredients.append(ingredient)
-        st.image(img, width=50)
+        ingredient_list.append([img, st.checkbox(f"{ingredient}")])
     except:
-        if st.checkbox(f"{ingredient}", key=ingredient):
-            selected_ingredients.append(ingredient)
-
+        ingredient_list.append([None, st.checkbox(f"{ingredient}")])
+        
 if st.button("Load"):
+    for ingredient in ingredient_list:
+        if ingredient[1]:
+            selected_ingredients.append(ingredients[ingredient_list.index(ingredient)])
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
         rolls = get_rolls(selected_ingredients)
         if rolls:
-            for roll in rolls:
-                st.write(f"{roll}")
+            st.write("Here's what you can make:")
+            for i in range(0, len(rolls), 2):
+                if i + 1 < len(rolls):
+                    st.write("{} \t\t {}".format(rolls[i], rolls[i + 1]))
+                else:
+                    st.write("{}".format(rolls[i]))
         else:
             st.write("You cannot make any sushi rolls.")
     else:
