@@ -27,7 +27,7 @@ st.title("Sushi Roll Maker")
 selected_ingredients = []
 
 # Divide the columns into two parts
-columns = st.beta_columns(2)
+columns = st.columns(2)
 
 with columns:
     for ingredient in ingredients[:len(ingredients)//2]:
