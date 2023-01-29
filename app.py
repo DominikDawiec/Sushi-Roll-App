@@ -78,7 +78,8 @@ if st.button("Load"):
                 roll_img = Image.open(f"{roll}.png")
                 st.image(roll_img, width=100)
                 st.write(f"{roll}")
-                st.write("Ingredients: ", sushi_rolls[roll])
+                st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
+
         else:
             st.write("You cannot make any sushi rolls.")
     else:
