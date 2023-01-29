@@ -30,7 +30,7 @@ for ingredient in ingredients:
     if st.checkbox(f"{ingredient}"):
         selected_ingredients.append(ingredient)
         try:
-            img = Image.open(f"{ingredient}.jpg")
+            img = Image.open(f"{ingredient}.png")
             st.image(img, width=50)
         except:
             pass
