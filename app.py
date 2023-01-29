@@ -26,11 +26,11 @@ st.title("Sushi Roll Maker")
 
 selected_ingredients = []
 
-# Divide the columns into two parts
-col1, col2 = st.columns(2)
+# Divide the columns into three parts
+col1, col2, col3 = st.columns(3)
 
 with col1:
-    for ingredient in ingredients[:len(ingredients)//2]:
+    for ingredient in ingredients[:len(ingredients)//3]:
         try:
             img = Image.open(f"{ingredient}.png")
             if st.checkbox(f"{ingredient}", key=ingredient):
@@ -39,16 +39,28 @@ with col1:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
+
 with col2:
-        for ingredient in ingredients[len(ingredients)//2:]:
-            try:
-                img = Image.open(f"{ingredient}.png")
-                if st.checkbox(f"{ingredient}", key=ingredient):
-                    selected_ingredients.append(ingredient)
-                st.image(img, width=50)
-            except:
-                if st.checkbox(f"{ingredient}", key=ingredient):
-                    selected_ingredients.append(ingredient)
+    for ingredient in ingredients[len(ingredients)//3:2*len(ingredients)//3]:
+        try:
+            img = Image.open(f"{ingredient}.png")
+            if st.checkbox(f"{ingredient}", key=ingredient):
+                selected_ingredients.append(ingredient)
+            st.image(img, width=50)
+        except:
+            if st.checkbox(f"{ingredient}", key=ingredient):
+                selected_ingredients.append(ingredient)
+
+with col3:
+    for ingredient in ingredients[2*len(ingredients)//3:]:
+        try:
+            img = Image.open(f"{ingredient}.png")
+            if st.checkbox(f"{ingredient}", key=ingredient):
+                selected_ingredients.append(ingredient)
+            st.image(img, width=50)
+        except:
+            if st.checkbox(f"{ingredient}", key=ingredient):
+                selected_ingredients.append(ingredient)
 
 if st.button("Load"):
     if len(selected_ingredients) > 0:
