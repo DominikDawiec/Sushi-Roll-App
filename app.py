@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 # List of ingredients
 ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
@@ -25,14 +26,14 @@ st.title("Sushi Roll Maker")
 
 selected_ingredients = []
 
-ingredient_images = {}
 for ingredient in ingredients:
-    ingredient_images[ingredient] = st.image(f"{ingredient}.jpg")
-
-# Checkbox for each ingredient
-for ingredient in ingredients:
-    if st.checkbox(ingredient):
+    if st.checkbox(f"{ingredient}"):
         selected_ingredients.append(ingredient)
+        try:
+            img = Image.open(f"{ingredient}.jpg")
+            st.image(img, width=50)
+        except:
+            pass
 
 if st.button("Load"):
     if len(selected_ingredients) > 0:
@@ -40,7 +41,7 @@ if st.button("Load"):
         rolls = get_rolls(selected_ingredients)
         if rolls:
             for roll in rolls:
-                st.write(f"- {roll}")
+                st.write(f"{roll}")
         else:
             st.write("You cannot make any sushi rolls.")
     else:
