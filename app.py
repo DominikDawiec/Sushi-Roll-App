@@ -28,7 +28,7 @@ selected_ingredients = []
 
 for ingredient in ingredients:
     try:
-        img = Image.open(f"{ingredient}.jpg")
+        img = Image.open(f"{ingredient}.png")
         if st.checkbox(f"{ingredient}", key=ingredient):
             selected_ingredients.append(ingredient)
         st.image(img, width=50)
