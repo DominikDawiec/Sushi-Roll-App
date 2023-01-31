@@ -154,6 +154,6 @@ if st.button("Make sushi 🔪"):
             bar.progress(100)
             status_text.text("🍣 Presenting the beautiful sushi rolls, Enjoy!")
         else:
-            st.write("You cannot make any sushi rolls.")
+            st.write("You cannot make any sushi rolls, please select more ingredients")
     else:
         st.write("Please select ingredients.")
