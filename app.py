@@ -53,13 +53,13 @@ st.title("🍣 Sushi Roll Maker")
 st.markdown(
     """
     Welcome to the Sushi Roll Maker! This app is live connected to a Google Drive sheet with sushi roll recipes. 
-    You can use the ingredients provided to make your own sushi rolls! 
     
     Link to the Google Drive sheet: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing).
     
     """
 )
 
+st.write("Please select ingredients that you have got in hand:")
 selected_ingredients = []
 
 # Divide the columns into three parts
