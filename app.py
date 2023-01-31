@@ -38,23 +38,6 @@ for row in df:
     ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
 ingredients = list(ingredients)
 
-st.set_page_config(
-    page_title="Sushi App",
-    page_icon="🍣",
-    initial_sidebar_state="expanded",
-)
-
-# List of ingredients
-#ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
-
-# Sushi rolls and their ingredients
-#sushi_rolls = {
-#    'Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
-#    'Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
-#    'Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
-#    'Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
-#    'California Roll': ['crab', 'avocado', 'cucumber'],
-#}
 
 # Function to get the list of rolls that can be made
 def get_rolls(ingredients):
