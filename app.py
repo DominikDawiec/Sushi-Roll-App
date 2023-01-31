@@ -138,6 +138,8 @@ if st.button("Make sushi 🔪"):
         status_text.text("🍣 Perfectly rolling the sushi with years of practice...")
         time.sleep(2)
         
+        if len(selected_ingredients) == len(ingredients):
+            st.write("Wow! You have selected all possible ingredients, looks like you are really hungry or extremely interested in sushi making!")
         
         st.write("You can make the following rolls:")
         rolls = get_rolls(selected_ingredients)
