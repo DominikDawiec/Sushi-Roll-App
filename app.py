@@ -4,6 +4,17 @@ import pyparsing
 from gsheetsdb import connect
 import time
 
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
 # Create a connection object.
 conn = connect()
 
@@ -47,15 +58,9 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("🍣 Sushi Roll Maker")
 
-# Project description
-st.markdown(
-    """
-    Welcome to the Sushi Roll Maker! This app is live connected to a Google Drive sheet with sushi roll recipes. 
-    
-    Link to the Google Drive sheet: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing).
-    
-    """
-)
+st.subheader('Welcome to the Sushi Roll Maker! This app is connected to a Google Drive sheet with sushi roll recipes. ')
+st.subheader('Link to the Google Drive sheet: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing). Please feel free to contribute, recipes are automatically updated every hour ')
+
 
 st.write("Please select ingredients that you have got in hand:")
 selected_ingredients = []   
