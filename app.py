@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import pyparsing
 from gsheetsdb import connect
 
 # Create a connection object.
