@@ -109,8 +109,9 @@ with col3:
             img = Image.open("nopic.png")
             st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
-    
-if st.button("Make sushi 🔪"):
+
+st.markdown("<center>", unsafe_allow_html=True)
+if st.button("Make sushi 🔪", width=100, key="make_sushi_button"):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
         bar = st.progress(0)
