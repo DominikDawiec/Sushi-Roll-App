@@ -102,21 +102,37 @@ with col3:
 if st.button("Make sushi 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
-        with st.spinner("Making sushi 🍣"):
-            st.write("You can make the following rolls:")
-            rolls = get_rolls(selected_ingredients)
-            if rolls:
-                for roll in rolls:
-                    try:
-                        roll_img = Image.open(f"{roll}.png")
-                        st.image(roll_img, width=100)
-                    except:
-                        roll_img = Image.open("nopic.png")
-                        st.image(roll_img, width=100)
-                    st.write(f"{roll}")
-                    st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
+        bar = st.progress(0)
+        status_text = st.empty()
 
-            else:
-                st.write("You cannot make any sushi rolls.")
+        bar.progress(10)
+        status_text.text("🍣 Preparing ingredients...")
+        time.sleep(2)
+
+        bar.progress(40)
+        status_text.text("🍣 Rolling sushi...")
+        time.sleep(2)
+
+        bar.progress(70)
+        status_text.text("🍣 Cutting sushi...")
+        time.sleep(2)
+
+        st.write("You can make the following rolls:")
+        rolls = get_rolls(selected_ingredients)
+        if rolls:
+            for roll in rolls:
+                try:
+                    roll_img = Image.open(f"{roll}.png")
+                    st.image(roll_img, width=100)
+                except:
+                    roll_img = Image.open("nopic.png")
+                    st.image(roll_img, width=100)
+                st.write(f"{roll}")
+                st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
+
+            bar.progress(100)
+            status_text.text("🍣 Enjoy your sushi rolls!")
+        else:
+            st.write("You cannot make any sushi rolls.")
     else:
         st.write("Please select ingredients.")
