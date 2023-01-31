@@ -21,13 +21,13 @@ df = run_query(f'SELECT * FROM "{sheet_url}"')
 st.write("df")
 st.dataframe(df)
     
-sum = {}
+sushi_rolls = {}
 
 for row in df:
-    if row[0] not in sum:
-        sum[row[0]] = [row[1]]
+    if row[0] not in sushi_rolls:
+        sushi_rolls[row[0]] = [row[1]]
     else:
-        sum[row[0]].append(row[1])
+        sushi_rolls[row[0]].append(row[1])
 
 
 st.dataframe(sum)
@@ -35,23 +35,23 @@ st.write(sum)
     
     
 
-st.set_page_config(
-    page_title="Sushi App",
-    page_icon="🍣",
-    initial_sidebar_state="expanded",
-)
+#st.set_page_config(
+#    page_title="Sushi App",
+#    page_icon="🍣",
+#    initial_sidebar_state="expanded",
+#)
 
 # List of ingredients
 ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
 
 # Sushi rolls and their ingredients
-sushi_rolls = {
-    'Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
-    'Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
-    'Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
-    'Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
-    'California Roll': ['crab', 'avocado', 'cucumber'],
-}
+#sushi_rolls = {
+#    'Seattle Roll': ['smoked salmon', 'avocado', 'cucumber'],
+#    'Philadelphia Roll': ['cream cheese', 'smoked salmon', 'avocado'],
+#    'Spicy Tuna Roll': ['tuna', 'cream cheese', 'avocado'],
+#    'Dragon Roll': ['eel sauce', 'avocado', 'cucumber'],
+#    'California Roll': ['crab', 'avocado', 'cucumber'],
+#}
 
 # Function to get the list of rolls that can be made
 def get_rolls(ingredients):
