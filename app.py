@@ -18,6 +18,9 @@ def run_query(query):
 
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
+
+if st.button("Refresh"):
+    df = run_query(f'SELECT * FROM "{sheet_url}"')
     
 sushi_rolls = {}
 
