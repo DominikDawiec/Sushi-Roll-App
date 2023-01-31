@@ -16,27 +16,23 @@ def run_query(query):
     rows = rows.fetchall()
     return rows
 
-sheet_url = st.secrets["public_gsheets_url"]
-df = run_query(f'SELECT * FROM "{sheet_url}"')
-    
-sushi_rolls = {}
+def load_data():
+    sheet_url = st.secrets["public_gsheets_url"]
+    df = run_query(f'SELECT * FROM "{sheet_url}"')
 
-for row in df:
-    if row[0] not in sushi_rolls:
-        sushi_rolls[row[0]] = [row[1]]
-    else:
-        sushi_rolls[row[0]].append(row[1])
-    
-sushi_rolls = {}
-ingredients = set()
-for row in df:
-    if row[0] not in sushi_rolls:
-        sushi_rolls[row[0]] = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
-    else:
-        sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
-    ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
-ingredients = list(ingredients)
+    sushi_rolls = {}
+    ingredients = set()
+    for row in df:
+        if row[0] not in sushi_rolls:
+            sushi_rolls[row[0]] = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
+        else:
+            sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
+        ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
+    ingredients = list(ingredients)
 
+    return sushi_rolls, ingredients
+
+load_data()
 
 # Function to get the list of rolls that can be made
 def get_rolls(ingredients):
