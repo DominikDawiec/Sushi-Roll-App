@@ -4,7 +4,6 @@ import pyparsing
 from gsheetsdb import connect
 import time
 
-
 # Create a connection object.
 conn = connect()
 
@@ -18,8 +17,6 @@ def run_query(query):
 
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
-
-
     
 sushi_rolls = {}
 
