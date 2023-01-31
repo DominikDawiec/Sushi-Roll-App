@@ -30,8 +30,9 @@ for row in df:
         sushi_rolls[row[0]].append(row[1])
 
 
-st.dataframe(sum)
-st.write(sum)
+
+st.dataframe(sushi_rolls)
+st.write(sushi_rolls)
     
     
 
