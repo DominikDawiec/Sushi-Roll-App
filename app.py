@@ -17,6 +17,14 @@ def run_query(query):
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
 
+if st.button("Add Row"):
+    # Add new row to the sheet
+    conn.execute(f'INSERT INTO "{sheet_url}" (Column1, Column2) VALUES (NULL, NULL)')
+    df = run_query(f'SELECT * FROM "{sheet_url}"')
+    st.success("Row added successfully!")
+
+    
+
 # Print results.
 st.write("df")
 st.dataframe(df)
