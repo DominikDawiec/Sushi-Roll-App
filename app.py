@@ -63,6 +63,11 @@ st.markdown(
     """
 )
 
+
+
+st.write("Please select ingredients that you have got in hand:")
+selected_ingredients = []
+
 if st.button("Refresh the connection with Google Drive File"):
     df = run_query(f'SELECT * FROM "{sheet_url}"')
     
@@ -75,9 +80,6 @@ if st.button("Refresh the connection with Google Drive File"):
             sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
         ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
     ingredients = list(ingredients)
-
-st.write("Please select ingredients that you have got in hand:")
-selected_ingredients = []
 
 # Divide the columns into three parts
 col1, col2, col3 = st.columns(3)
