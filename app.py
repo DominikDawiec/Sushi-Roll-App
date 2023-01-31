@@ -19,8 +19,7 @@ def run_query(query):
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
 
-if st.button("Refresh"):
-    df = run_query(f'SELECT * FROM "{sheet_url}"')
+
     
 sushi_rolls = {}
 
@@ -39,6 +38,9 @@ for row in df:
         sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
     ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
 ingredients = list(ingredients)
+
+
+
 
 # Function to get the list of rolls that can be made
 def get_rolls(ingredients):
@@ -60,6 +62,19 @@ st.markdown(
     
     """
 )
+
+if st.button("Refresh the connection with Google Drive File"):
+    df = run_query(f'SELECT * FROM "{sheet_url}"')
+    
+    sushi_rolls = {}
+    ingredients = set()
+    for row in df:
+        if row[0] not in sushi_rolls:
+            sushi_rolls[row[0]] = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
+        else:
+            sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
+        ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
+    ingredients = list(ingredients)
 
 st.write("Please select ingredients that you have got in hand:")
 selected_ingredients = []
