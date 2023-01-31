@@ -149,12 +149,10 @@ if st.button("Make sushi 🔪"):
             for roll in rolls:
                 try:
                     roll_img = Image.open(f"{roll}.png")
-                    st.image(roll_img, width=100)
+                    st.markdown(f"<div style='display: inline-block; margin: 10px;'><img src='{roll}.png' width='100' /><br />{roll}<br />Ingredients: {', '.join(sushi_rolls[roll])}</div>", unsafe_allow_html=True)
                 except:
                     roll_img = Image.open("nopic.png")
-                    st.image(roll_img, width=100)
-                st.write(f"{roll}")
-                st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
+                    st.markdown(f"<div style='display: inline-block; margin: 10px;'><img src='nopic.png' width='100' /><br />{roll}<br />Ingredients: {', '.join(sushi_rolls[roll])}</div>", unsafe_allow_html=True)
 
             bar.progress(100)
             status_text.text("🍣 Presenting the stunning sushi creations!")
