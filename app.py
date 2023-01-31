@@ -39,9 +39,6 @@ for row in df:
     ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
 ingredients = list(ingredients)
 
-
-
-
 # Function to get the list of rolls that can be made
 def get_rolls(ingredients):
     available_rolls = []
@@ -63,15 +60,8 @@ st.markdown(
     """
 )
 
-
-
 st.write("Please select ingredients that you have got in hand:")
-selected_ingredients = []
-
-if st.button("Refresh"):
-    df = run_query(f'SELECT * FROM "{sheet_url}"')
-    st.dataframe (df)
-    
+selected_ingredients = []   
     
 
 # Divide the columns into three parts
