@@ -154,6 +154,7 @@ if st.button("Make sushi 🔪"):
             status_text.text("🍣 Presenting the beautiful sushi rolls, Enjoy!")
         else:
             st.write("You cannot make any sushi rolls, please select more ingredients")
-            st.image(nopic.png, width=100)
+            roll_img = Image.open("nopic.png")
+            st.image(roll_img, width=100)
     else:
         st.write("Please select ingredients.")
