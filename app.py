@@ -15,12 +15,22 @@ def run_query(query):
     return rows
 
 sheet_url = st.secrets["public_gsheets_url"]
-rows = run_query(f'SELECT * FROM "{sheet_url}"')
+df = run_query(f'SELECT * FROM "{sheet_url}"')
 
 # Print results.
-st.dataframe(rows)
+st.write("df")
+st.dataframe(df)
     
+ingredients = []
+sushi_rolls = {}
+
+for i, row in df.iterrows():
+    ingredient = ast.literal_eval(row['Ingredients'])
+    ingredients.extend(ingredient)
+    sushi_rolls[row['Sushi_Roll']] = ingredient
     
+st.write(sushi_rolls)
+st.write(ingredients)
     
     
     
