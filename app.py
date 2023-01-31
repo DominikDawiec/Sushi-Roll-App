@@ -24,9 +24,6 @@ for row in df:
         sushi_rolls[row[0]] = [row[1]]
     else:
         sushi_rolls[row[0]].append(row[1])
-
-st.dataframe(sushi_rolls)
-st.write(sushi_rolls)
     
 sushi_rolls = {}
 ingredients = set()
