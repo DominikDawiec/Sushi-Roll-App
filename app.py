@@ -19,7 +19,7 @@ df = run_query(f'SELECT * FROM "{sheet_url}"')
 
 if st.button("Add Row"):
     # Add new row to the sheet
-    conn.execute(f'INSERT INTO "{sheet_url}" (Column1, Column2) VALUES (NULL, NULL)')
+    conn.execute(f'INSERT INTO "{sheet_url}" (Column1, Column2) VALUES ("22", "34")')
     df = run_query(f'SELECT * FROM "{sheet_url}"')
     st.success("Row added successfully!")
 
