@@ -112,6 +112,7 @@ with col3:
 st.markdown("<center>", unsafe_allow_html=True)
 if st.button("Make sushi 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
+    st.write("Get ready for a sushi extravaganza!")
     if len(selected_ingredients) > 0:
         bar = st.progress(0)
         status_text = st.empty()
@@ -151,7 +152,7 @@ if st.button("Make sushi 🔪"):
                 st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
 
             bar.progress(100)
-            status_text.text("🍣 Presenting the beautiful sushi rolls, Enjoy!")
+            status_text.text("🍣 Presenting the stunning sushi creations, Om nom nom!")
         else:
             st.write("You cannot make any sushi rolls, please select more ingredients")
             roll_img = Image.open("nopic.png")
