@@ -111,7 +111,7 @@ with col3:
     st.markdown("</center>", unsafe_allow_html=True)
 
 st.markdown("<center>", unsafe_allow_html=True)
-if st.button("Make sushi 🔪", width=100, key="make_sushi_button"):
+if st.button("Make sushi 🔪", width=100):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
         bar = st.progress(0)
