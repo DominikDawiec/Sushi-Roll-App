@@ -112,7 +112,8 @@ with col3:
 st.markdown("<center>", unsafe_allow_html=True)
 if st.button("Make sushi 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
-    st.write("Get ready for a sushi extravaganza!")
+    if len(selected_ingredients) == len(ingredients):
+        st.write("Wow! You have selected all possible ingredients, looks like you are really hungry or extremely interested in sushi making!")
     if len(selected_ingredients) > 0:
         bar = st.progress(0)
         status_text = st.empty()
