@@ -51,8 +51,8 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("🍣 Sushi Roll Maker")
 
-st.caption('Welcome to the Sushi Roll Maker! This app is connected to a Google Drive sheet with sushi roll recipes. ')
-st.caption('Link to the Google Drive sheet: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing). Please feel free to contribute, recipes are automatically updated every hour ')
+st.write('Welcome to the Sushi Roll Maker! This app is connected to a Google Drive sheet with sushi roll recipes. ')
+st.write('Link to the Google Drive sheet: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing). Please feel free to contribute, recipes are automatically updated every hour ')
 
 
 st.write("Please select ingredients that you have got in hand:")
