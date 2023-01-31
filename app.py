@@ -70,16 +70,9 @@ selected_ingredients = []
 
 if st.button("Refresh"):
     df = run_query(f'SELECT * FROM "{sheet_url}"')
+    st.dataframe (df)
     
-    sushi_rolls = {}
-    ingredients = set()
-    for row in df:
-        if row[0] not in sushi_rolls:
-            sushi_rolls[row[0]] = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
-        else:
-            sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
-        ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
-    ingredients = list(ingredients)
+    
 
 # Divide the columns into three parts
 col1, col2, col3 = st.columns(3)
