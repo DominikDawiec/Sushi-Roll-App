@@ -106,17 +106,26 @@ if st.button("Make sushi 🔪"):
         status_text = st.empty()
 
         bar.progress(10)
-        status_text.text("🍣 Preparing ingredients...")
+        status_text.text("🍣 Deciding what type of sushi to make...")
         time.sleep(2)
 
-        bar.progress(40)
-        status_text.text("🍣 Rolling sushi...")
+        bar.progress(30)
+        status_text.text("🍣 Looking for inspiration from Jiro Ono sensei...")
+        time.sleep(2)
+
+        bar.progress(50)
+        status_text.text("🍣 Finding the freshest fish at the Tsukiji fish market...")
         time.sleep(2)
 
         bar.progress(70)
-        status_text.text("🍣 Cutting sushi...")
+        status_text.text("🍣 Preparing the rice with secret family recipe...")
         time.sleep(2)
-
+        
+        bar.progress(90)
+        status_text.text("🍣 Perfectly rolling the sushi with years of practice...")
+        time.sleep(2)
+        
+        
         st.write("You can make the following rolls:")
         rolls = get_rolls(selected_ingredients)
         if rolls:
@@ -131,7 +140,7 @@ if st.button("Make sushi 🔪"):
                 st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
 
             bar.progress(100)
-            status_text.text("🍣 Enjoy your sushi rolls!")
+            status_text.text("🍣 Presenting the beautiful sushi rolls, Enjoy!")
         else:
             st.write("You cannot make any sushi rolls.")
     else:
