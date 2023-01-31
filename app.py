@@ -10,7 +10,7 @@ conn = connect()
 
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
-@st.cache(ttl=600)
+@st.cache(ttl=600, allow_output_mutation=True)
 def run_query(query):
     rows = conn.execute(query, headers=1)
     rows = rows.fetchall()
@@ -68,10 +68,7 @@ st.markdown(
 st.write("Please select ingredients that you have got in hand:")
 selected_ingredients = []
 
-if st.button("Refresh the connection with Google Drive File"):
-    conn = connect()
-
-    sheet_url = st.secrets["public_gsheets_url"]
+if st.button("Refresh"):
     df = run_query(f'SELECT * FROM "{sheet_url}"')
     
     sushi_rolls = {}
