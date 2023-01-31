@@ -2,6 +2,8 @@ import streamlit as st
 from PIL import Image
 import pyparsing
 from gsheetsdb import connect
+import time
+
 
 # Create a connection object.
 conn = connect()
@@ -100,21 +102,21 @@ with col3:
 if st.button("Make sushi 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
-        st.write("You can make the following rolls:")
-        rolls = get_rolls(selected_ingredients)
-        if rolls:
-            for roll in rolls:
-                try:
-                    roll_img = Image.open(f"{roll}.png")
-                    st.image(roll_img, width=100)
-                except:
-                    roll_img = Image.open("nopic.png")
-                    st.image(roll_img, width=100)
-                st.write(f"{roll}")
-                st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
+        with st.spinner("Making sushi 🍣"):
+            st.write("You can make the following rolls:")
+            rolls = get_rolls(selected_ingredients)
+            if rolls:
+                for roll in rolls:
+                    try:
+                        roll_img = Image.open(f"{roll}.png")
+                        st.image(roll_img, width=100)
+                    except:
+                        roll_img = Image.open("nopic.png")
+                        st.image(roll_img, width=100)
+                    st.write(f"{roll}")
+                    st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
 
-        else:
-            st.write("You cannot make any sushi rolls.")
+            else:
+                st.write("You cannot make any sushi rolls.")
     else:
         st.write("Please select ingredients.")
-
