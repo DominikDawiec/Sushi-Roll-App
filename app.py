@@ -16,10 +16,6 @@ def run_query(query):
 
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
-
-# Print results.
-st.write("df")
-st.dataframe(df)
     
 sushi_rolls = {}
 
@@ -29,8 +25,6 @@ for row in df:
     else:
         sushi_rolls[row[0]].append(row[1])
 
-
-
 st.dataframe(sushi_rolls)
 st.write(sushi_rolls)
     
@@ -38,19 +32,17 @@ sushi_rolls = {}
 ingredients = set()
 for row in df:
     if row[0] not in sushi_rolls:
-        sushi_rolls[row[0]] = row[1].split(',')
+        sushi_rolls[row[0]] = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
     else:
-        sushi_rolls[row[0]].extend(row[1].split(','))
-    ingredients.update(row[1].split(','))
+        sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
+    ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
 ingredients = list(ingredients)
-    
-st.write("indigrients")
-st.write(ingredients)
-#st.set_page_config(
-#    page_title="Sushi App",
-#    page_icon="🍣",
-#    initial_sidebar_state="expanded",
-#)
+
+st.set_page_config(
+    page_title="Sushi App",
+    page_icon="🍣",
+    initial_sidebar_state="expanded",
+)
 
 # List of ingredients
 #ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
@@ -119,7 +111,7 @@ with col3:
                 selected_ingredients.append(ingredient)
     st.markdown("</center>", unsafe_allow_html=True)
     
-if st.button("Load 🔪"):
+if st.button("Make sushi 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
     if len(selected_ingredients) > 0:
         st.write("You can make the following rolls:")
