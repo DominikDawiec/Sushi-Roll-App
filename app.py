@@ -22,11 +22,13 @@ st.write("df")
 st.dataframe(df)
     
 sum = {}
-for index, row in df.iterrows():
+
+for row in df:
     if row[0] not in sum:
         sum[row[0]] = [row[1]]
     else:
         sum[row[0]].append(row[1])
+
 
 st.dataframe(sum)
 st.write(sum)
