@@ -34,8 +34,18 @@ for row in df:
 st.dataframe(sushi_rolls)
 st.write(sushi_rolls)
     
+sushi_rolls = {}
+ingredients = set()
+for row in df:
+    if row[0] not in sushi_rolls:
+        sushi_rolls[row[0]] = row[1].split(',')
+    else:
+        sushi_rolls[row[0]].extend(row[1].split(','))
+    ingredients.update(row[1].split(','))
+ingredients = list(ingredients)
     
-
+st.write("indigrients")
+st.write(ingredients)
 #st.set_page_config(
 #    page_title="Sushi App",
 #    page_icon="🍣",
@@ -43,7 +53,7 @@ st.write(sushi_rolls)
 #)
 
 # List of ingredients
-ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
+#ingredients = ['smoked salmon', 'avocado', 'cucumber', 'crab', 'cream cheese', 'eel sauce', 'wasabi', 'soy sauce']
 
 # Sushi rolls and their ingredients
 #sushi_rolls = {
