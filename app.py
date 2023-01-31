@@ -69,6 +69,8 @@ st.write("Please select ingredients that you have got in hand:")
 selected_ingredients = []
 
 if st.button("Refresh the connection with Google Drive File"):
+    conn = connect()
+
     sheet_url = st.secrets["public_gsheets_url"]
     df = run_query(f'SELECT * FROM "{sheet_url}"')
     
