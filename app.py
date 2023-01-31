@@ -49,6 +49,18 @@ def get_rolls(ingredients):
 # Streamlit app
 st.title("🍣 Sushi Roll Maker")
 
+# Project description
+st.markdown(
+    """
+    Welcome to our sushi roll maker app! With this app, you can create custom sushi rolls based on the ingredients you have on hand.
+    
+    This Streamlit app helps you make sushi rolls! It is live connected to a Google Sheet containing the recipes. 
+    You can find the sheet at this link: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing).
+    
+    Get ready to make some delicious sushi rolls!
+    """
+)
+
 selected_ingredients = []
 
 # Divide the columns into three parts
