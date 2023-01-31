@@ -17,29 +17,19 @@ def run_query(query):
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
 
-if st.button("Add Row"):
-    # Add new row to the sheet
-    conn.execute(f'INSERT INTO "{sheet_url}" (Column1, Column2) VALUES ("22", "34")')
-    df = run_query(f'SELECT * FROM "{sheet_url}"')
-    st.success("Row added successfully!")
-
-    
-
 # Print results.
 st.write("df")
 st.dataframe(df)
     
-ingredients = []
-sushi_rolls = {}
+sum = {}
+for index, row in df.iterrows():
+    if row[0] not in sum:
+        sum[row[0]] = [row[1]]
+    else:
+        sum[row[0]].append(row[1])
 
-for i, row in df.iterrows():
-    ingredient = ast.literal_eval(row['Ingredients'])
-    ingredients.extend(ingredient)
-    sushi_rolls[row['Sushi_Roll']] = ingredient
-    
-st.write(sushi_rolls)
-st.write(ingredients)
-    
+st.dataframe(sum)
+st.write(sum)
     
     
 
