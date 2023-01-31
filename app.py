@@ -63,6 +63,8 @@ with col1:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
+            img = Image.open("nopic.png")
+            st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
 
 with col2:
@@ -76,6 +78,8 @@ with col2:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
+            img = Image.open("nopic.png")
+            st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
     
 with col3:
@@ -89,6 +93,8 @@ with col3:
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
+            img = Image.open("nopic.png")
+            st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
     
 if st.button("Make sushi 🔪"):
