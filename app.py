@@ -39,6 +39,25 @@ def get_rolls(ingredients):
             available_rolls.append(roll)
     return available_rolls
 
+def colored_header(
+    label: str = "Nice title",
+    description: str = "Cool description",
+    color_name: _SUPPORTED_COLORS = "red-70",
+):
+    """
+    Shows a header with a colored underline and an optional description.
+    """
+    if color_name is None:
+        color_name = next(HEADER_COLOR_CYCLE)
+    st.subheader(label)
+    st.write(
+        f'<hr style="background-color: {color(color_name)}; margin-top: 0;'
+        ' margin-bottom: 0; height: 3px; border: none; border-radius: 3px;">',
+        unsafe_allow_html=True,
+    )
+    if description:
+        st.caption(description)
+
 # creating list of sushi funfacts
 funfacts = [
     "Sushi originated in Southeast Asia and was introduced to Japan in the 8th century.",
