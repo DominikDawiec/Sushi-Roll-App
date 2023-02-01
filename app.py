@@ -59,6 +59,8 @@ st.title("🍣 Sushi Roll Maker")
 with st.empty():
     st.write(" ")
     st.write(" ")
+    st.write(" ")
+    st.write(" ")
     
 st.write("Welcome to the Sushi Roll Maker! 🎉")
 st.write("Are you a fan of sushi and want to make some at home? This app is here to help you.")
@@ -67,6 +69,8 @@ st.write("The recipe database is connected to a Google Drive sheet and is update
 st.write("Don't have all the ingredients? No problem! Feel free to add your own recipes to our database by contributing to the [Google Drive Sheet](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing). We would love to see what unique creations you come up with.")
 
 with st.empty():
+    st.write(" ")
+    st.write(" ")
     st.write(" ")
     st.write(" ")
     
