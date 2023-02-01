@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.colored_header import colored_header
 from PIL import Image
 import pyparsing
 from gsheetsdb import connect
