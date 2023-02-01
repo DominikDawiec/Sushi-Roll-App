@@ -46,7 +46,7 @@ funfacts = [
     "In Japan, it's considered bad manners to dip the rice side of sushi into the soy sauce.",
     "Tuna is the most popular fish used in sushi.",
     "The first sushi bar in the United States opened in 1966 in Los Angeles.",
-    "California rolls were invented in Los Angeles and are now a popular type of sushi worldwide.",
+    "The most popular type of sushi in the world is the California Roll, which was created in Los Angeles in the 1970s.",
     "In Japan, it's customary to eat sushi with chopsticks.",
     "Raw salmon is not traditionally used in Japanese sushi and is a more recent addition.",
     "Gari, or pickled ginger, is a common condiment served with sushi.",
