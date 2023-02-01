@@ -55,8 +55,11 @@ funfacts = [
 
 # Streamlit app
 st.title("🍣 Sushi Roll Maker")
+
 with st.empty():
     st.write(" ")
+    st.write(" ")
+    
 st.write("Welcome to the Sushi Roll Maker! 🎉")
 st.write("Are you a fan of sushi and want to make some at home? This app is here to help you.")
 st.write("You can find a variety of sushi roll recipes in our database, and all you need to do is select the ingredients you have on hand. The app will then suggest which rolls you can make.")
@@ -65,6 +68,8 @@ st.write("Don't have all the ingredients? No problem! Feel free to add your own 
 
 with st.empty():
     st.write(" ")
+    st.write(" ")
+    
 st.write("Now, let's start making some sushi! Please select the ingredients you have:")
 selected_ingredients = []   
 
