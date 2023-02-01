@@ -179,7 +179,7 @@ if st.button("Make sushi 🔪"):
                     st.image(roll_img, width=100)
                 except FileNotFoundError:
                     roll_img = Image.open("nopic.png")
-                    st.image(roll_img, width=50, use_column_width=False)
+                    st.image(roll_img, width=100)
 
                 st.write(f"Ingredients: {', '.join(sushi_rolls[roll])}")
 
