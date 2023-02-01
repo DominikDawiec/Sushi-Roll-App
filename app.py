@@ -190,5 +190,4 @@ if st.button("Make sushi 🔪"):
     selected_funfact = funfacts[random_index]
 
     # Display the selected funfact
-    st.write("Did you know:")
-    st.write(selected_funfact)
+    st.write("Did you know:", selected_funfact)
