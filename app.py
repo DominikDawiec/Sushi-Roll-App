@@ -181,12 +181,12 @@ if st.button("Make sushi 🔪"):
     else:
         st.write("Please select ingredients.")
 
-st.write("Enjoy your sushi making experience! 😋")
+    st.write("Enjoy your sushi making experience! 😋")
 
-# Select a random funfact
-random_index = random.randint(0, len(funfacts) - 1)
-selected_funfact = funfacts[random_index]
+    # Select a random funfact
+    random_index = random.randint(0, len(funfacts) - 1)
+    selected_funfact = funfacts[random_index]
 
-# Display the selected funfact
-st.write("Did you know:")
-st.write(selected_funfact)
+    # Display the selected funfact
+    st.write("Did you know:")
+    st.write(selected_funfact)
