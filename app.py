@@ -4,64 +4,50 @@ import pyparsing
 from gsheetsdb import connect
 import time
 
-st.set_page_config(
-    page_title="Sushi Maker App",
-    page_icon="🍣")
-
 # Create a connection object.
 conn = connect()
 
-# Perform SQL query on the Google Sheet.
-# Uses st.cache to only rerun when the query changes or after 10 min.
+# Perform SQL query on the Google Sheet with caching
 @st.cache(ttl=600, allow_output_mutation=True)
 def run_query(query):
     rows = conn.execute(query, headers=1)
-    rows = rows.fetchall()
-    return rows
+    return rows.fetchall()
 
+# Get data from Google Sheet
 sheet_url = st.secrets["public_gsheets_url"]
 df = run_query(f'SELECT * FROM "{sheet_url}"')
-    
-sushi_rolls = {}
 
-for row in df:
-    if row[0] not in sushi_rolls:
-        sushi_rolls[row[0]] = [row[1]]
-    else:
-        sushi_rolls[row[0]].append(row[1])
-    
+# Create dictionary of sushi rolls and their ingredients
 sushi_rolls = {}
 ingredients = set()
 for row in df:
-    if row[0] not in sushi_rolls:
-        sushi_rolls[row[0]] = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
+    roll_name = row[0]
+    roll_ingredients = [ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')]
+    if roll_name not in sushi_rolls:
+        sushi_rolls[roll_name] = roll_ingredients
     else:
-        sushi_rolls[row[0]].extend([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
-    ingredients.update([ingredient.strip().strip('"').strip() for ingredient in row[1].split(',')])
+        sushi_rolls[roll_name].extend(roll_ingredients)
+    ingredients.update(roll_ingredients)
 ingredients = list(ingredients)
 
-# Function to get the list of rolls that can be made
+# Function to get list of rolls that can be made with selected ingredients
 def get_rolls(ingredients):
     available_rolls = []
-    for roll, ingr in sushi_rolls.items():
-        if set(ingr).issubset(ingredients):
+    for roll, roll_ingredients in sushi_rolls.items():
+        if set(roll_ingredients).issubset(ingredients):
             available_rolls.append(roll)
     return available_rolls
 
 # Streamlit app
 st.title("🍣 Sushi Roll Maker")
-
-st.write('Welcome to the Sushi Roll Maker! This app is connected to a Google Drive sheet with sushi roll recipes. ')
-st.write('Link to the Google Drive sheet: [Google Drive Sheet with Recipes](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing). Please feel free to contribute, recipes are automatically updated every hour ')
-
-
-st.write("Please select ingredients that you have got in hand:")
+st.markdown("Welcome to the Sushi Roll Maker! This app is connected to a Google Drive sheet with sushi roll recipes.")
+st.write("Please select ingredients you have:")
 selected_ingredients = []   
-    
 
-# Divide the columns into three parts
+# Divide ingredients into three columns for display
 col1, col2, col3 = st.columns(3)
 
+# Display ingredients and add to selected_ingredients when checked
 with col1:
     st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[:len(ingredients)//3]:
@@ -82,36 +68,51 @@ with col2:
     for ingredient in ingredients[len(ingredients)//3:2*len(ingredients)//3]:
         try:
             img = Image.open(f"{ingredient}.png")
-            if st.checkbox(f"{ingredient}", key=ingredient):
-                selected_ingredients.append(ingredient)
+            selected = ingredient in selected_ingredients
+            if st.checkbox(f"{ingredient}", key=ingredient, value=selected):
+                if selected:
+                    selected_ingredients.remove(ingredient)
+                else:
+                    selected_ingredients.append(ingredient)
             st.image(img, width=50, use_column_width=True)
         except:
-            if st.checkbox(f"{ingredient}", key=ingredient):
-                selected_ingredients.append(ingredient)
+            selected = ingredient in selected_ingredients
+            if st.checkbox(f"{ingredient}", key=ingredient, value=selected):
+                if selected:
+                    selected_ingredients.remove(ingredient)
+                else:
+                    selected_ingredients.append(ingredient)
             img = Image.open("nopic.png")
             st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
-    
+
 with col3:
     st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[2*len(ingredients)//3:]:
         try:
             img = Image.open(f"{ingredient}.png")
-            if st.checkbox(f"{ingredient}", key=ingredient):
-                selected_ingredients.append(ingredient)
+            selected = ingredient in selected_ingredients
+            if st.checkbox(f"{ingredient}", key=ingredient, value=selected):
+                if selected:
+                    selected_ingredients.remove(ingredient)
+                else:
+                    selected_ingredients.append(ingredient)
             st.image(img, width=50, use_column_width=True)
         except:
-            if st.checkbox(f"{ingredient}", key=ingredient):
-                selected_ingredients.append(ingredient)
+            selected = ingredient in selected_ingredients
+            if st.checkbox(f"{ingredient}", key=ingredient, value=selected):
+                if selected:
+                    selected_ingredients.remove(ingredient)
+                else:
+                    selected_ingredients.append(ingredient)
             img = Image.open("nopic.png")
             st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
 
-st.markdown("<center>", unsafe_allow_html=True)
 if st.button("Make sushi 🔪"):
     st.markdown("<center>", unsafe_allow_html=True)
 
-    if len(selected_ingredients) > 0:
+    if selected_ingredients:
         bar = st.progress(0)
         status_text = st.empty()
 
@@ -128,34 +129,37 @@ if st.button("Make sushi 🔪"):
         time.sleep(2)
 
         bar.progress(70)
-        status_text.text("🍣 Preparing the rice with secret family recipe...")
+        status_text.text("🍣 Preparing the rice with a secret family recipe...")
         time.sleep(2)
-        
+
         bar.progress(90)
         status_text.text("🍣 Perfectly rolling the sushi with years of practice...")
         time.sleep(2)
-        
+
         if len(selected_ingredients) == len(ingredients):
-            st.write("Wow! You have selected all possible ingredients, looks like you are really hungry or extremely interested in sushi making!")
-        
+            st.write("Wow! You have selected all possible ingredients. Looks like you're either really hungry or extremely interested in sushi making!")
+
         st.write("You can make the following rolls:")
         rolls = get_rolls(selected_ingredients)
+
         if rolls:
             for roll in rolls:
                 try:
                     roll_img = Image.open(f"{roll}.png")
                     st.image(roll_img, width=100)
-                except:
+                except FileNotFoundError:
                     roll_img = Image.open("nopic.png")
                     st.image(roll_img, width=100)
-                st.write(f"{roll}")
-                st.write("Ingredients: ", ", ".join(sushi_rolls[roll]))
+
+                st.write(roll)
+                st.write(f"Ingredients: {', '.join(sushi_rolls[roll])}")
 
             bar.progress(100)
             status_text.text("🍣 Presenting the stunning sushi creations!")
         else:
-            st.write("You cannot make any sushi rolls, please select more ingredients")
+            st.write("You cannot make any sushi rolls. Please select more ingredients.")
             roll_img = Image.open("nopic.png")
             st.image(roll_img, width=100)
     else:
         st.write("Please select ingredients.")
+
