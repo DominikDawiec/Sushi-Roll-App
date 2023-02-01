@@ -194,10 +194,6 @@ if st.button("Make sushi 🔪"):
     
     st.write("---")
     
-    st.write("Enjoy your sushi making experience!")
-    
-    st.write("---")
-    
     # Select a random funfact
     random_index = random.randint(0, len(funfacts) - 1)
     selected_funfact = funfacts[random_index]
