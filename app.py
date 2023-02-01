@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.colored_header import colored_header
 from PIL import Image
 import pyparsing
 from gsheetsdb import connect
@@ -39,25 +38,6 @@ def get_rolls(ingredients):
         if set(roll_ingredients).issubset(ingredients):
             available_rolls.append(roll)
     return available_rolls
-
-def colored_header(
-    label: str = "Nice title",
-    description: str = "Cool description",
-    color_name: "red",
-):
-    """
-    Shows a header with a colored underline and an optional description.
-    """
-    if color_name is None:
-        color_name = next(HEADER_COLOR_CYCLE)
-    st.subheader(label)
-    st.write(
-        f'<hr style="background-color: {color(color_name)}; margin-top: 0;'
-        ' margin-bottom: 0; height: 3px; border: none; border-radius: 3px;">',
-        unsafe_allow_html=True,
-    )
-    if description:
-        st.caption(description)
 
 # creating list of sushi funfacts
 funfacts = [
