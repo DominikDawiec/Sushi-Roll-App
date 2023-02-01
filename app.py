@@ -145,6 +145,9 @@ if st.button("Make sushi 🔪"):
 
         if rolls:
             for roll in rolls:
+                st.write("---")
+                st.write(roll)
+
                 try:
                     roll_img = Image.open(f"{roll}.png")
                     st.image(roll_img, width=100)
@@ -152,7 +155,6 @@ if st.button("Make sushi 🔪"):
                     roll_img = Image.open("nopic.png")
                     st.image(roll_img, width=100)
 
-                st.write(roll)
                 st.write(f"Ingredients: {', '.join(sushi_rolls[roll])}")
 
             bar.progress(100)
@@ -163,4 +165,3 @@ if st.button("Make sushi 🔪"):
             st.image(roll_img, width=100)
     else:
         st.write("Please select ingredients.")
-
