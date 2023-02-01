@@ -3,6 +3,7 @@ from PIL import Image
 import pyparsing
 from gsheetsdb import connect
 import time
+import random
 
 # Create a connection object.
 conn = connect()
@@ -37,6 +38,20 @@ def get_rolls(ingredients):
         if set(roll_ingredients).issubset(ingredients):
             available_rolls.append(roll)
     return available_rolls
+
+# creating list of sushi funfacts
+funfacts = [
+    "Sushi originated in Southeast Asia and was introduced to Japan in the 8th century.",
+    "The word sushi means 'sour-tasting' and refers to the vinegared rice used in the dish.",
+    "In Japan, it's considered bad manners to dip the rice side of sushi into the soy sauce.",
+    "Tuna is the most popular fish used in sushi.",
+    "The first sushi bar in the United States opened in 1966 in Los Angeles.",
+    "California rolls were invented in Los Angeles and are now a popular type of sushi worldwide.",
+    "In Japan, it's customary to eat sushi with chopsticks.",
+    "Raw salmon is not traditionally used in Japanese sushi and is a more recent addition.",
+    "Gari, or pickled ginger, is a common condiment served with sushi.",
+    "The fastest sushi eater in the world can eat 14 pounds of sushi in 8 minutes."
+]
 
 # Streamlit app
 st.title("🍣 Sushi Roll Maker")
@@ -165,3 +180,13 @@ if st.button("Make sushi 🔪"):
             st.image(roll_img, width=100)
     else:
         st.write("Please select ingredients.")
+
+st.write("Enjoy your sushi making experience! 😋")
+
+# Select a random funfact
+random_index = random.randint(0, len(funfacts) - 1)
+selected_funfact = funfacts[random_index]
+
+# Display the selected funfact
+st.write("Did you know:")
+st.write(selected_funfact)
