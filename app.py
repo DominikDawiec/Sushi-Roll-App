@@ -180,8 +180,10 @@ if st.button("Make sushi 🔪"):
             st.image(roll_img, width=100)
     else:
         st.write("Please select ingredients.")
-
-    st.write("Enjoy your sushi making experience! 😋")
+    
+    st.write("---")
+    
+    st.write("Enjoy your sushi making experience!")
 
     # Select a random funfact
     random_index = random.randint(0, len(funfacts) - 1)
