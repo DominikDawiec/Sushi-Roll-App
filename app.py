@@ -62,6 +62,7 @@ st.write("The recipe database is connected to a Google Drive sheet and is update
 st.write("Don't have all the ingredients? No problem! Feel free to add your own recipes to our database by contributing to the [Google Drive Sheet](https://docs.google.com/spreadsheets/d/1LIaTr9CqhJjCCv_V5sdJa490VBqKXhAE_HjL1o-rxcI/edit?usp=sharing). We would love to see what unique creations you come up with.")
 
 st.write("Now, let's start making some sushi! Please select the ingredients you have:")
+selected_ingredients = []   
 
 # Divide ingredients into three columns for display
 col1, col2, col3 = st.columns(3)
