@@ -198,11 +198,11 @@ if st.button("Make sushi 🔪"):
     
     st.write("---")
     
-    if st.button("Roll Funfact 🎲"):
-        # Select a random funfact
-        random_index = random.randint(0, len(funfacts) - 1)
-        selected_funfact = funfacts[random_index]
+if st.button("Roll Funfact 🎲"):
+    # Select a random funfact
+    random_index = random.randint(0, len(funfacts) - 1)
+    selected_funfact = funfacts[random_index]
 
-        # Display the selected funfact
-        st.write("Did you know:")
-        st.write(selected_funfact)
+    # Display the selected funfact
+    st.write("Did you know:")
+    st.write(selected_funfact)
