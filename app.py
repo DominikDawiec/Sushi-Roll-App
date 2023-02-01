@@ -43,7 +43,7 @@ def get_rolls(ingredients):
 def colored_header(
     label: str = "Nice title",
     description: str = "Cool description",
-    color_name: _SUPPORTED_COLORS = "red",
+    color_name: "red",
 ):
     """
     Shows a header with a colored underline and an optional description.
