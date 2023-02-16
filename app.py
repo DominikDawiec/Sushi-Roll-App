@@ -79,14 +79,14 @@ with col1:
     st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[:len(ingredients)//3]:
         try:
-            img = Image.open(f"{ingredient}.png")
+            img = Image.open(f"images/{ingredient}.png")
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
             st.image(img, width=50, use_column_width=True)
         except:
             if st.checkbox(f"{ingredient}", key=ingredient):
                 selected_ingredients.append(ingredient)
-            img = Image.open("nopic.png")
+            img = Image.open("images/nopic.png")
             st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
 
@@ -94,7 +94,7 @@ with col2:
     st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[len(ingredients)//3:2*len(ingredients)//3]:
         try:
-            img = Image.open(f"{ingredient}.png")
+            img = Image.open(f"images/{ingredient}.png")
             selected = ingredient in selected_ingredients
             if st.checkbox(f"{ingredient}", key=ingredient, value=selected):
                 if selected:
@@ -109,7 +109,7 @@ with col2:
                     selected_ingredients.remove(ingredient)
                 else:
                     selected_ingredients.append(ingredient)
-            img = Image.open("nopic.png")
+            img = Image.open("images/nopic.png")
             st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
 
@@ -117,7 +117,7 @@ with col3:
     st.markdown("<center>", unsafe_allow_html=True)
     for ingredient in ingredients[2*len(ingredients)//3:]:
         try:
-            img = Image.open(f"{ingredient}.png")
+            img = Image.open(f"images/{ingredient}.png")
             selected = ingredient in selected_ingredients
             if st.checkbox(f"{ingredient}", key=ingredient, value=selected):
                 if selected:
@@ -132,7 +132,7 @@ with col3:
                     selected_ingredients.remove(ingredient)
                 else:
                     selected_ingredients.append(ingredient)
-            img = Image.open("nopic.png")
+            img = Image.open("images/nopic.png")
             st.image(img, width=50, use_column_width=True)
     st.markdown("</center>", unsafe_allow_html=True)
 
@@ -175,10 +175,10 @@ if st.button("Make sushi 🔪"):
                 st.write(roll)
 
                 try:
-                    roll_img = Image.open(f"{roll}.png")
+                    roll_img = Image.open(f"images/{roll}.png")
                     st.image(roll_img, width=100)
                 except FileNotFoundError:
-                    roll_img = Image.open("nopic.png")
+                    roll_img = Image.open("images/nopic.png")
                     st.image(roll_img, width=100)
 
                 st.write(f"Ingredients: {', '.join(sushi_rolls[roll])}")
@@ -187,7 +187,7 @@ if st.button("Make sushi 🔪"):
             status_text.text("🍣 Presenting the stunning sushi creations!")
         else:
             st.write("You cannot make any sushi rolls. Please select more ingredients.")
-            roll_img = Image.open("nopic.png")
+            roll_img = Image.open("images/nopic.png")
             st.image(roll_img, width=100)
     else:
         st.write("Please select ingredients.")
