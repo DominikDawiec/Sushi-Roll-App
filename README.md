@@ -10,8 +10,7 @@ The Sushi Roll App is a Python and Streamlit-based application that allows users
 To access the application, please click on this link: [Sushi Roll App](https://sushiroll.streamlit.app/)
 
 ## Workflow
-To understand the workflow of the Sushi Roll App, please refer to the included workflow.
-![](workflow/workflow.pdf)
+To understand the workflow of the Sushi Roll App, please refer to the included [workflow](workflow/workflow.pdf).
 
 ## Additional Features
 In addition to the core functionality of the app, I've added a few additional features to enhance the user experience:
