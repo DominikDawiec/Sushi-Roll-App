@@ -1,3 +1,5 @@
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sushiroll.streamlit.app/)
+
 # Sushi Roll App
 
 The Sushi Roll App is a Python and Streamlit-based application that allows users to choose from a list of available ingredients and obtain suggestions for possible sushi rolls that can be made with those ingredients. This app is designed to make sushi roll creation easier and more accessible for all users, regardless of their level of experience. 
@@ -5,10 +7,11 @@ The Sushi Roll App is a Python and Streamlit-based application that allows users
 #### Project Status: [Completed]
 
 ## Application Link
-To access the application, please click on this link: (Sushi Roll App)["https://sushiroll.streamlit.app/"]
+To access the application, please click on this link: [Sushi Roll App](https://sushiroll.streamlit.app/)
 
 ## Workflow
-To understand the workflow of the Sushi Roll App, please refer to the included workflow.pdf.
+To understand the workflow of the Sushi Roll App, please refer to the included workflow.
+![](workflow/workflow.pdf)
 
 ## Additional Features
 In addition to the core functionality of the app, I've added a few additional features to enhance the user experience:
