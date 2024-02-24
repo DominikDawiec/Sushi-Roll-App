@@ -2,7 +2,7 @@
 
 # Sushi Roll App
 
-The Sushi Roll App is a Python and Streamlit-based application that allows users to choose from a list of available ingredients and obtain suggestions for possible sushi rolls that can be made with those ingredients. This app is designed to make sushi roll creation easier and more accessible for all users, regardless of their level of experience. 
+**The Sushi Roll App** is a **Python and Streamlit-based** application that allows users to choose from a list of available ingredients and obtain suggestions for possible sushi rolls that can be made with those ingredients. This app is designed to make sushi roll creation easier and more accessible for all users, regardless of their level of experience. 
 
 #### Project Status: [Completed]
 
